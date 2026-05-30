@@ -1,13 +1,17 @@
 let isMusicPlaying = false;
-const bgMusic = document.getElementById('bgMusic');
-const musicBtn = document.getElementById('musicBtn');
+let bgMusic = null;
+let musicBtn = null;
 
 document.addEventListener('DOMContentLoaded', () => {
+    bgMusic = document.getElementById('bgMusic');
+    musicBtn = document.getElementById('musicBtn');
     initCountdown();
     initTimelineAnimation();
 });
 
 function toggleMusic() {
+    if (!bgMusic || !musicBtn) return;
+    
     if (isMusicPlaying) {
         bgMusic.pause();
         musicBtn.classList.remove('playing');
