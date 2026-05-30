@@ -1,27 +1,114 @@
 let isMusicPlaying = false;
 let bgMusic = null;
 let musicBtn = null;
+let musicIcon = null;
+let musicWaves = null;
+let hasInteracted = false;
 
 document.addEventListener('DOMContentLoaded', () => {
     bgMusic = document.getElementById('bgMusic');
     musicBtn = document.getElementById('musicBtn');
+    musicIcon = document.querySelector('.music-icon');
+    musicWaves = document.querySelector('.music-waves');
+    
+    // 添加音乐加载事件监听
+    if (bgMusic) {
+        bgMusic.addEventListener('loadstart', () => {
+            showMusicLoading();
+        });
+        
+        bgMusic.addEventListener('canplay', () => {
+            hideMusicLoading();
+        });
+        
+        bgMusic.addEventListener('playing', () => {
+            isMusicPlaying = true;
+            updateMusicButton(true);
+        });
+        
+        bgMusic.addEventListener('pause', () => {
+            isMusicPlaying = false;
+            updateMusicButton(false);
+        });
+        
+        bgMusic.addEventListener('error', (e) => {
+            console.error('音乐加载失败:', e);
+            hideMusicLoading();
+        });
+    }
+    
+    // 用户首次交互时尝试播放音乐
+    document.addEventListener('click', () => {
+        if (!hasInteracted && bgMusic && !isMusicPlaying) {
+            hasInteracted = true;
+            tryPlayMusic();
+        }
+    }, { once: true });
+    
+    document.addEventListener('touchstart', () => {
+        if (!hasInteracted && bgMusic && !isMusicPlaying) {
+            hasInteracted = true;
+            tryPlayMusic();
+        }
+    }, { once: true });
+    
     initCountdown();
     initTimelineAnimation();
 });
+
+function showMusicLoading() {
+    if (musicIcon) {
+        musicIcon.style.opacity = '0.5';
+    }
+}
+
+function hideMusicLoading() {
+    if (musicIcon) {
+        musicIcon.style.opacity = '1';
+    }
+}
+
+function updateMusicButton(isPlaying) {
+    if (musicBtn) {
+        if (isPlaying) {
+            musicBtn.classList.add('playing');
+        } else {
+            musicBtn.classList.remove('playing');
+        }
+    }
+}
+
+function tryPlayMusic() {
+    if (!bgMusic || !musicBtn) return;
+    
+    bgMusic.play().then(() => {
+        isMusicPlaying = true;
+        updateMusicButton(true);
+    }).catch(error => {
+        console.log('自动播放被阻止，需要用户手动点击播放:', error);
+        // 可以在这里添加提示，但不强制显示
+    });
+}
 
 function toggleMusic() {
     if (!bgMusic || !musicBtn) return;
     
     if (isMusicPlaying) {
         bgMusic.pause();
-        musicBtn.classList.remove('playing');
+        isMusicPlaying = false;
+        updateMusicButton(false);
     } else {
-        bgMusic.play().catch(error => {
-            console.log('Music autoplay blocked:', error);
+        bgMusic.play().then(() => {
+            isMusicPlaying = true;
+            updateMusicButton(true);
+        }).catch(error => {
+            console.error('播放失败:', error);
+            // 播放失败也更新UI
+            updateMusicButton(false);
         });
-        musicBtn.classList.add('playing');
     }
-    isMusicPlaying = !isMusicPlaying;
+    
+    hasInteracted = true;
 }
 
 function initCountdown() {

@@ -55,11 +55,18 @@ body {
     position: relative;
     transition: var(--transition);
     color: var(--primary);
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    -webkit-user-select: none;
 }
 
 .music-btn:hover {
     transform: scale(1.05);
     box-shadow: var(--shadow-soft);
+}
+
+.music-btn:active {
+    transform: scale(0.95);
 }
 
 .music-btn.playing {
@@ -72,6 +79,7 @@ body {
     height: 22px;
     z-index: 2;
     position: relative;
+    transition: opacity 0.3s ease;
 }
 
 .music-waves {
@@ -677,45 +685,57 @@ body {
 
 @media (max-width: 768px) {
     .music-control {
-        top: 16px;
-        right: 16px;
+        top: 12px;
+        right: 12px;
+        z-index: 1000;
     }
     
     .music-btn {
-        width: 48px;
-        height: 48px;
+        width: 44px;
+        height: 44px;
+    }
+    
+    .hero-content {
+        padding: 60px 20px;
     }
     
     .hero-title {
-        font-size: 48px;
+        font-size: 40px;
     }
     
     .hero-subtitle {
-        font-size: 16px;
+        font-size: 15px;
+        padding: 0 10px;
     }
     
     .time-value {
-        font-size: 36px;
+        font-size: 32px;
     }
     
     .time-block {
-        min-width: 64px;
+        min-width: 56px;
+    }
+    
+    .time-text {
+        font-size: 12px;
     }
     
     .timeline::before {
-        left: 24px;
+        left: 20px;
     }
     
     .timeline-item,
     .timeline-item:nth-child(odd) {
         flex-direction: column;
         align-items: flex-start;
-        padding-left: 64px;
+        padding-left: 56px;
     }
     
     .timeline-dot {
-        left: 24px;
+        left: 20px;
         transform: translateX(-50%);
+        width: 14px;
+        height: 14px;
     }
     
     .timeline-card,
@@ -724,43 +744,148 @@ body {
         width: 100%;
         margin-left: 0;
         margin-right: 0;
+        padding: 28px 24px;
     }
     
     .section-title {
-        font-size: 28px;
+        font-size: 26px;
+    }
+    
+    .card-title {
+        font-size: 20px;
+    }
+    
+    .card-text {
+        font-size: 14px;
+    }
+    
+    .wish-section {
+        padding: 70px 0;
     }
     
     .wish-card {
-        padding: 48px 32px;
+        padding: 40px 24px;
+        border-radius: 18px;
     }
     
     .wish-title {
         font-size: 24px;
     }
     
+    .wish-text {
+        font-size: 15px;
+    }
+    
+    .wish-btn {
+        padding: 14px 36px;
+        font-size: 15px;
+    }
+    
     .modal-content {
-        padding: 48px 32px;
+        padding: 44px 28px;
+    }
+    
+    .modal-title {
+        font-size: 24px;
+    }
+    
+    .modal-text {
+        font-size: 14px;
+    }
+    
+    .modal-btn {
+        padding: 12px 32px;
+        font-size: 14px;
+    }
+    
+    .modal-close {
+        top: 12px;
+        right: 12px;
+        width: 32px;
+        height: 32px;
+        font-size: 18px;
+    }
+    
+    .modal-icon {
+        font-size: 48px;
     }
 }
 
 @media (max-width: 480px) {
     .hero-title {
-        font-size: 36px;
+        font-size: 32px;
+    }
+    
+    .hero-subtitle {
+        font-size: 14px;
     }
     
     .time-value {
-        font-size: 28px;
+        font-size: 26px;
     }
     
     .time-block {
-        min-width: 52px;
+        min-width: 48px;
+    }
+    
+    .time-text {
+        font-size: 11px;
     }
     
     .countdown-timer {
-        gap: 8px;
+        gap: 6px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .time-separator {
+        font-size: 16px;
+    }
+    
+    .timeline-section {
+        padding: 60px 0;
     }
     
     .timeline-card {
-        padding: 24px;
+        padding: 20px;
+        border-radius: 16px;
+    }
+    
+    .card-icon {
+        font-size: 28px;
+    }
+    
+    .card-title {
+        font-size: 18px;
+    }
+    
+    .card-text {
+        font-size: 13px;
+        line-height: 1.7;
+    }
+    
+    .section-title {
+        font-size: 24px;
+        margin-bottom: 40px;
+    }
+    
+    .wish-card {
+        padding: 32px 20px;
+    }
+    
+    .wish-title {
+        font-size: 22px;
+    }
+    
+    .wish-text {
+        font-size: 14px;
+    }
+    
+    .modal-content {
+        padding: 36px 20px;
+    }
+    
+    .modal-title {
+        font-size: 22px;
     }
 }
