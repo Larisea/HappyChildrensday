@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>六一儿童节快乐 | 童心未泯</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <audio id="bgMusic" loop preload="auto">
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
+    
+    <div class="music-control" id="musicControl">
+        <button class="music-btn" id="musicBtn" onclick="toggleMusic()">
+            <svg class="music-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 18V5l12-2v13"></path>
+                <circle cx="6" cy="18" r="3"></circle>
+                <circle cx="18" cy="16" r="3"></circle>
+            </svg>
+            <div class="music-waves">
+                <span></span><span></span><span></span>
+            </div>
+        </button>
+    </div>
+    
+    <section class="hero">
+        <div class="hero-background">
+            <div class="circle circle-1"></div>
+            <div class="circle circle-2"></div>
+            <div class="circle circle-3"></div>
+        </div>
+        <div class="hero-content">
+            <div class="countdown">
+                <p class="countdown-label">距离我们的六一儿童节还有</p>
+                <div class="countdown-timer">
+                    <div class="time-block">
+                        <span class="time-value" id="days">00</span>
+                        <span class="time-text">天</span>
+                    </div>
+                    <div class="time-separator">·</div>
+                    <div class="time-block">
+                        <span class="time-value" id="hours">00</span>
+                        <span class="time-text">时</span>
+                    </div>
+                    <div class="time-separator">·</div>
+                    <div class="time-block">
+                        <span class="time-value" id="minutes">00</span>
+                        <span class="time-text">分</span>
+                    </div>
+                    <div class="time-separator">·</div>
+                    <div class="time-block">
+                        <span class="time-value" id="seconds">00</span>
+                        <span class="time-text">秒</span>
+                    </div>
+                </div>
+            </div>
+            
+            <h1 class="hero-title">给我的小朋友</h1>
+            <p class="hero-subtitle">无论多大，在我这里你永远可以做小孩</p>
+            
+            <div class="scroll-indicator">
+                <span class="scroll-text">看看我想对你说的话</span>
+                <div class="scroll-arrow"></div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="timeline-section" id="timeline">
+        <div class="container">
+            <h2 class="section-title">想对你说的话</h2>
+            
+            <div class="timeline">
+                <div class="timeline-item" data-index="1">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="card-icon">💕</div>
+                        <h3 class="card-title">遇见你之后</h3>
+                        <p class="card-text">我才发现，原来真正的喜欢就是让对方可以安心做回小孩。</p>
+                        <div class="card-tag">遇见</div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item" data-index="2">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="card-icon">🧸</div>
+                        <h3 class="card-title">你的小脾气</h3>
+                        <p class="card-text">在别人面前你是成熟稳重的大人，可在我这里，你永远是那个爱撒娇的小朋友。</p>
+                        <div class="card-tag">宠爱</div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item" data-index="3">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="card-icon">🌈</div>
+                        <h3 class="card-title">想给你的</h3>
+                        <p class="card-text">想给你买很多很多糖，想和你一起看很多很多风景，想和你一起慢慢变老。</p>
+                        <div class="card-tag">陪伴</div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item" data-index="4">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="card-icon">💭</div>
+                        <h3 class="card-title">你可以不用长大</h3>
+                        <p class="card-text">外面的世界很复杂，但在我这里，你可以永远保留那份纯真和孩子气。</p>
+                        <div class="card-tag">守护</div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item" data-index="5">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card special">
+                        <div class="card-icon">❤️</div>
+                        <h3 class="card-title">六一快乐</h3>
+                        <p class="card-text">我的小朋友，儿童节快乐！以后的每一个六一，我都想陪你一起过。</p>
+                        <div class="card-tag">永远</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="wish-section">
+        <div class="container">
+            <div class="wish-card">
+                <div class="wish-decoration">
+                    <div class="star star-1">⭐</div>
+                    <div class="star star-2">✨</div>
+                    <div class="star star-3">💫</div>
+                </div>
+                <h2 class="wish-title">只给你的</h2>
+                <p class="wish-text">这是专门为你准备的六一祝福<br>我的小朋友，要天天开心哦</p>
+                <button class="wish-btn" onclick="showSurprise()">点开看看</button>
+            </div>
+        </div>
+    </section>
+    
+    <footer class="footer">
+        <p class="footer-text">♡ 永远爱你的人</p>
+        <div class="footer-line"></div>
+    </footer>
+    
+    <div class="modal" id="surpriseModal">
+        <div class="modal-backdrop" onclick="closeModal()"></div>
+        <div class="modal-content">
+            <div class="modal-close" onclick="closeModal()">×</div>
+            <div class="modal-icon">🎁</div>
+            <h3 class="modal-title">给我的小朋友</h3>
+            <p class="modal-text">不管今天是不是六一<br>我都希望你能永远快乐<br>做我的小朋友，一辈子的那种</p>
+            <button class="modal-btn" onclick="closeModal()">收到啦！</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
